@@ -1,0 +1,559 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Grandpa BASIC 1980</title>
+
+  <link rel="stylesheet" href="app/gb80.css" />
+  <link rel="stylesheet" href="css/foundation.css" />
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="app/gb80.js"></script>
+  <script>monitor_color='green'</script>
+</head>
+
+<body class="gb80" onkeydown="keyevent(event)" onkeyup="keyup(event)">
+
+  <h3 class="gb80">GB80 - Grandpa BASIC 1980</h3>
+  <h5 class="gb80">PROGRAMMING 1980 STYLE! LINE NUMBERS! ALL UPPERCASE FONT! MONOCHROME MONITOR!</h5>
+
+<div style="float:left">
+  <canvas id="gb80-console" width="910" height="440" style="background-color:#000000; border:3px solid #aa5000">
+  </canvas>
+</div>
+
+<dl class="tabs vertical" id="basictabs" style="float:left; font-size:0.6rem" data-tab>
+  <dd><a class="dd-header">BASIC Language API:</a></dd>
+  <dd class="active"><a href="#proglines">Program Lines</a></dd>
+  <dd><a href="#variables">Variables</a></dd>
+  <dd><a href="#assignment">Assignment</a></dd>
+  <dd><a href="#remark">REM</a></dd>
+  <dd><a href="#goto">GOTO</a></dd>
+  <dd><a href="#if">IF</a></dd>
+  <dd><a href="#gosub">GOSUB</a></dd>
+  <dd><a href="#input">INPUT</a></dd>
+  <dd><a href="#print">PRINT</a></dd>
+  <dd><a href="#end">END</a></dd>
+  <dd><a class="dd-header">Code Examples:</a></dd>
+  <dd><a href="#ex1">Listing 1</a></dd>
+  <dd><a href="#ex2">Listing 2</a></dd>
+  <dd><a href="#ex3">Listing 3</a></dd>
+  <dd><a href="#ex4">Listing 4</a></dd>
+  <dd><a href="#ex5">Listing 5</a></dd>
+  <dd><a href="#ex6">Listing 6</a></dd>
+  <dd><a href="#ex7">Listing 7</a></dd>
+  <dd><a href="#ex8">Listing 8</a></dd>
+  <dd><a href="#ex9">Listing 9</a></dd>
+  <dd><a href="#ex10">Listing 10</a></dd>
+</dl>
+
+<div class="tabs-content vertical" id="api" style="float:left;">
+
+  <div class="content active" id="proglines">
+    <h5 class="gb80">Program lines in BASIC</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 1
+      20 PRINT "HELLO WORLD"
+    </pre>
+    <p>In the original BASIC programming language, each statement in the program was placed on a line preceeded by a line number.</p>
+    <pre>
+      220 X=7
+    </pre>
+    <p>Program lines in BASIC are executed in numerical order, except when statements such as <span class="codespan">GOTO</span>, <span class="codespan">IF</span>, <span class="codespan">GOSUB</span> or <span class="codespan">RETURN</span> divert program flow elsewhere. To write a BASIC program, just type one line at a time on the BASIC console. Place the desired line number in front of the line as you type. After entering a line, hit <span class="codespan">ENTER</span>. The console will tell you if there is a syntax error in the line.</p>
+    <p>Line numbers can be any integer from 1 to 32767. This number, which is 1 less than 32K (1024 times 32), was the maximum line number on many of the original BASIC platforms.</p>
+    <p>The maximum number of characters for a line on the Grandpa BASIC 1980 console is 80. This includes the line number. Lines do not continue over to the next line.</p>
+    <p>Be sure to follow the syntax exactly. Some habits that are common with modern programmers will not work here. For example, it is common today to place spaces around an equals sign, like this:</p>
+    <pre class="not-basic">
+      a = 10
+    </pre>
+    <p>This will not work in BASIC. If you try to type</p>
+    <pre>
+      A = 10
+    </pre>
+    <p>instead of<p>
+      <pre>
+        A=10
+      </pre>
+      <p>you will get a syntax error.</p>
+    <p>To correct a line while you are typing, you can use the <span class="codespan">BACKSPACE</span> key and retype. You cannot move the console cursor with arrow keys or mouse clicks. If you wish to change a line that has already been entered, just type in a new line with the same number. It will replace the original line that had that number. To see your changes, type the <span class="codespan">LIST</span> command.</p>
+    <p>To insert one or more lines between two other lines, give the new line or lines a number that is between the other two line numbers.</p>
+    <pre>
+      220 A=371
+      230 C=687
+    </pre>
+    <p>If we type</p>
+    <pre>
+      225 B=526
+    </pre>
+    <p>we will get this result.</p>
+    <pre>
+      LIST
+      220 A=371
+      225 B=526
+      230 C=687
+    </pre>
+    <p>For this reason, it is common when programming in BASIC to space out line numbers by 10 or some other increment. This will allow you to insert lines without renumbering everything.</p>
+    <p>To remove a line number entirely, type the number, then hit <span class="codespan">ENTER</span>.</p>
+    <p>Typing <span class="codespan">CLEAR</span> will remove all program lines and let you start over.</p>
+    <p>And remember that you can type <span class="codespan">LIST</span> to see your program at any time.</p>
+  </div>
+
+  <div class="content" id="variables">
+    <h5 class="gb80">Variables in BASIC</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 2
+      20 $H="HELLO WORLD"
+      30 P=3.1416
+      40 Z4=1980
+      50 $S2="DOLLARS"
+    </pre>
+    <p>There are two types of variables in Grandpa BASIC 1980, numeric and string. A variable name with a dollar sign ($) in front (<span class="codespan">$A</span>) is a string variable. A variable name without the dollar sign (<span class="codespan">A</span>) is a numeric variable.</p>
+    <p>In Grandpa BASIC 1980, as well as the earliest versions of BASIC, variable names consist of either a single, upper case letter of the alphabet (A-Z), or a single letter followed by a single digit (0-9). Thus, <span class="codespan">A</span>, <span class="codespan">A2</span>, <span class="codespan">X</span>, <span class="codespan">X0</span> and <span class="codespan">W9</span> are all legal names for numeric variables, and <span class="codespan">$S</span>, <span class="codespan">$Q3</span>, and <span class="codespan">$M</span> are legal names for string variables</p>
+    <p>All variables in BASIC have <em>global</em> scope. There are no local variables. BASIC predates object oriented languages and languages with methods or functions.</p>
+    <p>Arrays, also known as matrices in BASIC, were part of the BASIC language from the beginning. They have not been implemented yet in Grandpa BASIC 1980. </p>
+  </div>
+
+  <div class="content" id="assignment">
+    <h5 class="gb80">Assignment Statements</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 3
+      20 X=1
+      30 P=3.1416
+      40 N=N+1
+      50 T=T0+T1+T2+T3
+      60 R=((Z8*Z7)-Z4)/(D9*H3^2)
+      70 $S2="DOLLARS"
+      80 $M="MY NAME IS "+$N1
+    </pre>
+    <p>Assignment statements in BASIC are written with a variable name, followed by an equals sign (=), followed by an expression defining the value to be assigned to the variable. <strong>Do not use spaces</strong> around the equals sign, as this is a modern programming convention that was not used back then.</p>
+    <pre>
+      20 X=1
+      70 $S2="DOLLARS"
+    </pre>
+    <p>The part on the right side of the equals sign is the <em>expression</em>. This is the value to be assigned to the variable. An expression can be simple or compound.</p>
+    <p>The <em>very</em> earliest versions of BASIC (<em>Dartmouth BASIC</em> and others) called these assignment statements "<span class="codespan">LET</span> statements". The syntax required the keyword <span class="codespan">LET</span> at the beginning of the assignment (eg., <span class="codespan">LET X=Y*Z</span>). This requirement was soon deprecated.</p>
+    <h6 class="gb80">Numeric assignment and expressions</h6>
+    <p>A simple numeric expression consists of just a number. The number can be a simple integer, or contain a decimal.</p>
+    <pre>
+      610 I=0
+      620 N=1
+      630 M9=32767
+      640 P=3.1416
+      650 G1=0.0025
+      660 V9=42.0388
+    </pre>
+    <p>You can also assign the value of one variable to another.</p>
+    <pre>
+      670 X=Y
+    </pre>
+    <p>Compound numeric expressions can be formed by combining numbers and variables with arithmetic operators and grouping them with parentheses</p>
+    <pre>
+      710 Z=A+B+C+D
+      720 X=R2/R7
+      730 T1=M^3-(40*U)/(J4+1)
+    </pre>
+    <p>Available arithmetic operators are Addition, Subtraction, Multiplication, Division and Exponentiation (<span class="codespan"><strong>+</strong></span>, <span class="codespan"><strong>-</strong></span>, <span class="codespan"><strong>*</strong></span>, <span class="codespan"><strong>/</strong></span> and <span class="codespan"><strong>^</strong></span>)
+    </p>
+    <pre>
+      810 M=J+K
+      820 I=I-1
+      830 F=F1*F2
+      840 G=D/500
+      850 W=C^3
+    </pre>
+    <h6 class="gb80">String assignment and expressions</h6>
+    <p>A simple string expression consists of zero or more characters surrounded by double quote marks (<span class="codespan"><strong>"</strong></span>). Using single quotation marks (<span class="codespan"><strong>'</strong></span>) will cause a syntax error.</p>
+    <pre>
+      910 $H=""
+      920 $E3="   "
+      930 $R="Y"
+      940 $M3="WATER"
+      950 $T="BIRDS ARE SINGING IN THE TREES."
+    </pre>
+    <p>Just like numeric assignment, you can assign the value of one string variable to another.</p>
+    <pre>
+      960 $B=$A
+    </pre>
+    <p>Compound string expressions can be formed by concatenating two or more string values into one, using the plus sign (<span class="codespan"><strong>+</strong></span>). By <em>string values</em> we mean either variable names or strings in quotes.</p>
+    <pre>
+      970 $N=$N1+$N2+$N3
+      980 $V="MY NAME IS "+$N
+    </pre>
+  </div>
+
+  <div class="content" id="remark">
+    <h5 class="gb80"><span class="hst">REM</span></h5>
+    <h5 class="gb80">Comment Lines</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 4
+      20 REM
+      30 REM GOOD PROGRAMMERS USE COMMENTS
+      40 REM
+    </pre>
+    <p>Comments were called <em>remarks</em> in BASIC. Any line with a line number followed by <span class="codespan">REM</span> is a comment line. Any text following the <span class="codespan">REM</span>, out to the end of the line, is the comment.</p>
+    <pre>
+      300 REM
+      310 REM THIS IS THE COMPUTATION SECTION
+      320 REM HERE WE COMPUTE THE SUM
+      330 REM OF X AND Y
+      340 REM
+    </pre>
+    <p>A <span class="codespan">REM</span> statement without any text can be used as a spacer line.</p>
+    <pre>
+      400 REM
+    </pre>
+  </div>
+
+  <div class="content" id="goto">
+    <h5 class="gb80"><span class="hst">GOTO</span></h5>
+    <h5 class="gb80">Unconditional transfer of program flow</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 5
+      20 PRINT "BEGINNING"
+      30 GOTO 60
+      40 PRINT "END"
+      50 GOTO 100
+      60 PRINT "MIDDLE"
+      70 GOTO 40
+      100 PRINT "DONE"
+    </pre>
+    <p><span class="codespan">GOTO</span> statements are very simple. When BASIC executes a <span class="codespan">GOTO</span> statement, it transfers program flow to the designated line number.</p>
+    <pre>
+      8800 GOTO 2000
+    </pre>
+  </div>
+
+  <div class="content" id="if">
+    <h5 class="gb80"><span class="hst">IF</span></h5>
+    <h5 class="gb80">Conditional transfer of program flow</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 6
+      300 IF A=B THEN 600
+    </pre>
+    <p><span class="codespan">IF</span> statements transfer program flow based on the value of an expression that evaluates to <span class="codespan">TRUE</span> or <span class="codespan">FALSE</span>. These expressions are called <em>boolean expressions</em>.</p>
+    <p>Boolean expressions in Grandpa BASIC 1980 <span class="codespan">IF</span> statements compare a variable to another variable or value. Allowable comparators for numeric expressions are</p>
+      <ul>
+        <li><em>equals</em> <span class="codespan">=</span></li>
+        <li><em>not equal</em> <span class="codespan">&lt;&gt;</span></li>
+        <li><em>greater than</em> <span class="codespan">&gt;</span></li>
+        <li><em>greater or equal</em> <span class="codespan">&gt;=</span></li>
+        <li><em>lesser than</em> <span class="codespan">&lt;</span></li>
+        <li><em>lesser or equal</em> <span class="codespan">&lt;=</span></li>
+      </ul>
+    <pre>
+      410 IF H=22 THEN 1800
+      420 IF G&lt;&gt;H THEN 2300
+      430 IF N&gt;100 THEN 2600
+      440 IF I&gt;=8 THEN 2900
+      450 IF T&lt;7 THEN 3200
+      460 IF S&lt;=10 THEN 3500
+    </pre>
+    <p>The only allowable boolean operators in Grandpa BASIC 1980 for string values are </p>
+      <ul>
+        <li><em>equals</em> <span class="codespan">=</span></li>
+        <li><em>not equal</em> <span class="codespan">&lt;&gt;</span></li>
+      </ul>
+      <pre>
+        510 IF $Q="YES" THEN 4400
+        520 IF $G&lt;&gt;$H then 4700
+      </pre>
+      <p>The left side of the equals sign must be a variable name (numeric or string). The right side can be another variable name, or a numeric or string <em>literal value</em> (<span class ="codespan">62480</span>, <span class ="codespan">327.42</span>, <span class ="codespan">"Y"</span>, <span class ="codespan">"MISSOURI"</span>, ). Left and right sides must be both numeric values or both string values.</p>
+      <pre>
+        610 IF Q1=Q2 THEN 5100
+        620 IF V=0 THEN 5300
+        630 IF $T=$T8 THEN 5500
+        640 IF $K="SATURDAY" THEN 5700
+      </pre>
+  </div>
+
+  <div class="content" id="gosub">
+    <h5 class="gb80"><span class="hst">GOSUB</span> &amp; <span class="hst">RETURN</span></h5>
+    <h5 class="gb80">Transfer program flow and return</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 7
+      200 PRINT "BEFORE THE SUBROUTINE"
+      220 GOSUB 6000
+      240 PRINT "AFTER THE SUBROUTINE"
+      990 END
+      6000 REM
+      6010 REM EXAMPLE SUBROUTINE
+      6020 A=1776
+      6030 B=3321
+      6040 Z=A+B
+      6090 RETURN
+    </pre>
+    <p><span class="codespan">GOSUB</span> and <span class="codespan">RETURN</span> statements are used to transfer program flow to another part of the code, execute that code, then transfer program flow back to the original section of code. After the <span class="codespan">RETURN</span> statement, program execution resumes at the line after the line that called the subroutine.</p>
+    <p>The following code:</p>
+    <pre>
+      10 PRINT "AAA"
+      20 PRINT "BBB"
+      30 PRINT "CCC"
+      100 GOSUB 500
+      110 PRINT "GGG"
+      120 PRINT "HHH"
+      130 PRINT "III"
+      200 END
+      500 PRINT "DDD"
+      510 PRINT "EEE"
+      520 PRINT "FFF"
+      530 RETURN
+    </pre>
+    <p>Will give the following output:</p>
+    <pre>
+      AAA
+      BBB
+      CCC
+      DDD
+      EEE
+      FFF
+      GGG
+      HHH
+      III
+    </pre>
+  </div>
+
+  <div class="content" id="input">
+    <h5 class="gb80"><span class="hst">INPUT</span></h5>
+    <h5 class="gb80">Accept user input from the keyboard</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 8
+      40 INPUT X
+      50 INPUT "WHAT IS YOUR NAME";$N
+    </pre>
+    <p><span class="codespan">INPUT</span> statements allow you to accept user input from the keyboard, which is then assigned to program variables. <span class="codespan">INPUT</span> statments can be used for both numeric variables and string variables.</p>
+    <p>All that's necessary is the <span class="codespan">INPUT</span> keyword followed by the variable name.</p>
+    <pre>
+      600 INPUT W5
+      610 INPUT $T
+    </pre>
+    <p>Optionally, you can specify text for the input prompt. Place the text for the prompt in quotes, followed by a semicolon (;), then a variable name.</p>
+    <pre>
+      620 INPUT "HOW MANY";N
+      630 INPUT "CITY";$C2
+    </pre>
+  </div>
+
+  <div class="content" id="print">
+    <h5 class="gb80"><span class="hst">PRINT</span></h5>
+    <h5 class="gb80">Print output on the console</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 9
+      50 PRINT " "
+      60 PRINT "THE CURRENT VALUE FOR PRODUCT ID"
+      70 PRINT $P6
+      80 PRINT "IS"
+      90 PRINT V
+    </pre>
+    <p><span class="codespan">PRINT</span> statements write program output to the console. The <span class="codespan">PRINT</span> keyword is followed by a string value, either a string variable name, or a string literal in quotes</p>
+    <p>The <span class="codespan">PRINT</span> keyword followed by two quotation marks separated with a single blank space, <span class="codespan">PRINT " "</span>, can be used to print a blank line.</p>
+  </div>
+
+  <div class="content" id="end">
+    <h5 class="gb80"><span class="hst">END</span></h5>
+    <h5 class="gb80">Terminate program execution</h5>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - EXAMPLE 10
+      900 PRINT "FINISHED"
+      990 END
+    </pre>
+    <p>Program execution stops when an <span class="codespan">END</span> statement is reached.</p>
+    <p><span class="codespan">END</span> statements are optional and are not required. However, they can be useful for implementing multiple termination points. You can have more than one <span class="codespan">END</span> statement, reached by different paths.</p>
+    <pre>
+      640 IF B>2000 THEN 800
+      700 REM END WITH A LITTLE ONE
+      710 PRINT "THAT WAS A LITTLE ONE"
+      790 END
+      800 REM END WITH A BIG ONE
+      810 PRINT "THAT WAS A BIG ONE"
+      890 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex1">
+    <h5 class="gb80"><span class="hst">LISTING 1</span></h5>
+    <h5 class="gb80">Remark &amp; List</h5>
+    <p>Enter these lines, then type <span class="codespan">LIST</span> to see your program.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 1
+      20 REM REMARK AND LISTING DEMO
+      30 REM HELLO
+    </pre>
+  </div>
+
+  <div class="content" id="ex2">
+    <h5 class="gb80"><span class="hst">LISTING 2</span></h5>
+    <h5 class="gb80">Hello World</h5>
+    <p>After entering this program, type <span class="codespan">RUN</span> to see the "HELLO WORLD" message printed on the Grandpa BASIC console.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 2
+      20 REM HELLO WORLD PROGRAM
+      100 PRINT "HELLO WORLD"
+      999 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex3">
+    <h5 class="gb80"><span class="hst">LISTING 3</span></h5>
+    <h5 class="gb80">Numeric Assignment</h5>
+    <p>Assign a value to a numeric variable and see it printed out.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 3
+      20 REM NUMERIC ASSIGNMENT
+      100 X=1980
+      200 PRINT X
+      999 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex4">
+    <h5 class="gb80"><span class="hst">LISTING 4</span></h5>
+    <h5 class="gb80">String Assignment</h5>
+    <p>Assign a value to a string variable and see it printed out.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 4
+      20 REM STRING ASSIGNMENT
+      100 $T="COSTA MESA, CALIFORNIA"
+      200 PRINT $T
+      999 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex5">
+    <h5 class="gb80"><span class="hst">LISTING 5</span></h5>
+    <h5 class="gb80">Using the <span class="codespan">INPUT</span> statement</h5>
+    <p>Enter the parts of a name, then use a string expression to concatenate the parts into a whole name.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 5
+      20 REM 'MY NAME IS'
+      30 REM USING STRING CONCATENATION
+      100 INPUT "FIRST NAME";$N1
+      110 INPUT "MIDDLE NAME";$N2
+      120 INPUT "LAST NAME";$N3
+      200 $N=$N1+" "+$N2+" "+$N3
+      210 $Z="HELLO "+$N
+      300 PRINT $Z
+      999 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex6">
+    <h5 class="gb80"><span class="hst">LISTING 6</span></h5>
+    <h5 class="gb80">Using the <span class="codespan">GOTO</span> statement</h5>
+    <p>Use the <span class="codespan">GOTO</span> statement to jump to different parts of the program.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 6
+      20 REM USE THE GOTO STATEMENT
+      100 PRINT "START"
+      110 GOTO 900
+      300 PRINT "END"
+      310 END
+      900 PRINT "MIDDLE"
+      910 GOTO 300
+    </pre>
+  </div>
+
+  <div class="content" id="ex7">
+    <h5 class="gb80"><span class="hst">LISTING 7</span></h5>
+    <h5 class="gb80">Using the <span class="codespan">IF</span> statement</h5>
+    <p>Use the <span class="codespan">IF</span> statement for conditional flow of control.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 7
+      20 REM USE THE IF STATEMENT
+      100 PRINT "HELLO"
+      200 INPUT "QUIT (Y/N)";$Q
+      300 IF $Q="Y" THEN 800
+      310 GOTO 200
+      800 PRINT "GOODBYE"
+      999 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex8">
+    <h5 class="gb80"><span class="hst">LISTING 8</span></h5>
+    <h5 class="gb80">Guess a number</h5>
+    <p>This program selects a random number, then tells you if each guess is 'too low' or 'too high'. It uses the <span class="codespan">RND</span> and <span class="codespan">INT</span> functions. <span class="codespan">RND</span> gives a random number between 0.0 and 1.0, and <span class="codespan">INT</span> strips the digits past the decimal point and returns an integer ("whole number").</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 8
+      20 REM GUESS A NUMBER
+      100 M=1000
+      200 X=INT(M*RND)
+      300 PRINT " "
+      310 INPUT "ENTER YOUR GUESS";G
+      400 IF G=X THEN 900
+      410 IF G>X THEN 800
+      700 PRINT "TOO LOW"
+      710 GOTO 300
+      800 PRINT "TOO HIGH"
+      810 GOTO 300
+      900 PRINT "YOU WIN!"
+      999 END
+    </pre>
+  </div>
+
+  <div class="content" id="ex9">
+    <h5 class="gb80"><span class="hst">LISTING 9</span></h5>
+    <h5 class="gb80">Approximate Pi</h5>
+    <p>This program approximates <em>pi</em> by using what is called a "Monte Carlo method". It emulates points picked at random inside a square, then forms an approximation of <em>pi</em> by computing the ratio of points that fall within a circle inscribed within that square.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 9
+      20 REM APPROXIMATE PI WITH MONTE CARLO METHOD
+      100 C=0
+      110 I=0
+      120 N=2000
+      200 I=I+1
+      210 IF I>=N THEN 800
+      300 X=RND
+      310 Y=RND
+      400 R2=X*X+Y*Y
+      410 IF R2>=1.0 THEN 200
+      500 C=C+1
+      510 GOTO 200
+      800 P=(C*4)/N
+      900 PRINT "OUR APPROXIMATION OF PI IS"
+      910 PRINT P
+      999 END
+    </pre>
+    <img src="app/pi.png"/>
+    <p>If you really want to get into the details, the algorithm as implemented here actually just computes points within a one quarter section of the circle and square.</p>
+    <p>You can change the value of N in Line 120. The more iterations you do, the more accurate your approximation of <em>pi</em> will be.</p>
+  </div>
+
+  <div class="content" id="ex10">
+    <h5 class="gb80"><span class="hst">LISTING 10</span></h5>
+    <h5 class="gb80">Approximate square roots</h5>
+    <p>This program will approximate square roots by successively adjusting "min" and "max" values until they are both within a certain distance of each other. In this case, if you use the values in this example, the square root will be estimated to 4 decimal places. Since 32 x 32 is greater than 1000, the square root of any positive number less than 1000 will be between 0 and 32.</p>
+    <pre>
+      10 REM GRANDPA BASIC 1980 - LISTING 10
+      20 REM APPROXIMATE SQUARE ROOTS
+      100 A=0
+      110 B=32
+      200 PRINT "INPUT A NUMBER BETWEEN 0.0 AND 1000.0"
+      210 INPUT X
+      400 D=B-A
+      410 IF D<=0.0001 THEN 800
+      500 Z=(A+B)/2
+      510 Z2=Z*Z
+      520 IF Z2>X THEN 700
+      600 A=Z
+      610 GOTO 400
+      700 B=Z
+      710 GOTO 400
+      800 PRINT "YOUR SQUARE ROOT IS APPROX"
+      810 PRINT Z
+      999 END
+    </pre>
+  </div>
+
+</div>
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+</script>
+
+</body>
+
+</html>

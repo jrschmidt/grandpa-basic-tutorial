@@ -1,0 +1,51 @@
+h3.gb80 {
+  color: #009900;
+  font_weight:bold;
+}
+
+h4.gb80 {
+  color: #aa5000;
+  font_weight:bold;
+}
+
+h5.gb80 {
+  color: #aa5000;
+  font_weight:bold;
+}
+
+h6.gb80 {
+  color: #aa5000;
+  font_weight:bold;
+}
+
+#api {
+  /*color: #009900;*/
+  width: 500px;
+}
+
+pre, .codespan, .hst {
+  color: #009900;
+  font_weight:bold;
+}
+
+pre.not-basic {
+  color: #000066;
+}
+
+#basictabs {
+  width: 160px;
+}
+
+#basictabs dd a {
+  color: #aa5000;
+  padding: 0.4rem 0.8rem;
+}
+
+#basictabs dd a.dd-header {
+  color: #cc6666;
+  font-size: 0.8rem;
+  font_weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  padding: 0.4rem 0.8rem;
+}
